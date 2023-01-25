@@ -54,18 +54,18 @@ terminal-markdown-runner session stop <session id | 'all'>
 - `sesstion` lets you run multiple sessions of the same language in parallel without them interfering each other
 - `file` determines where this code will be put when snipping (can be used with a number to write code out of order)
 
-```markdown
-\`\`\`<language> [id=<cell id>] [session=<session id>] [file=<path>[:<number>]]
+````markdown
+```<language> [id=<cell id>] [session=<session id>] [file=<path>[:<number>]]
     code
-\`\`\`
 ```
+````
 
 ## Possible future features:
 
-- Allowing to copy content of code block with special token (e.g. "[content](<cell id>)")
+- Allowing to copy content of code block with special token (e.g. "\[content](<cell id>)")
 - WASM interoperation between code to input result of one cell to another
 - Update tables and maybe other parts of markdown with code blocks
-- Giving arguments to code in fenced code block head (e.g. "[var <var name> = <value>]")
+- Giving arguments to code in fenced code block head (e.g. "\[var <var name> = <value>]")
 - Read arguments from tables and other parts of markdown into code block
 
 ## Architecture:
