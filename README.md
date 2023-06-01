@@ -63,14 +63,20 @@ terminal-markdown-runner session stop <session id | 'all'>
 ## Possible future features:
 
 - Allowing to copy content of code block with special token (e.g. `[content](<cell id>)`)
-- WASM interoperation between code to input result of one cell to another
+- WASM interoperation between code to input result of one cell to another (Would depend on interface types if they ever happen and then only maybe this would work)
 - Update tables and maybe other parts of markdown with code blocks
 - Giving arguments to code in fenced code block head (e.g. `[var <var name> = <value>]`)
 - Read arguments from tables and other parts of markdown into code block
+- Use lua for config and scripting if there are good use cases
 
 ## Architecture:
 
 - Parse cli arguments with clap
 - Maybe own markdown parser (for more control?)
 - Run Jupyter kernels in docker containers
+    - Set default kernel when building image (thus data in /api/kernels POST is not needed and does not need to be obtained)
 - Use Jupyter Rest API for communication with kernels
+    - Start a default kernel `curl -X POST localhost:8888/api/kernels -H "Authorization: Token <TOKEN>"'`
+    - Connect with a WebSocket to send code and receive results
+- Use a yaml config (serde)
+    - Set docker image for a given language (different images could run different jupyter kernel implementations of the same language)
