@@ -51,7 +51,7 @@ terminal-markdown-runner session stop <session id | 'all'>
 
 - `language` can be set as usual
 - `id` setting an identifier to be able to run this specific cell (instead of only running everything under a heading)
-- `sesstion` lets you run multiple sessions of the same language in parallel without them interfering each other
+- `session` lets you run multiple sessions of the same language in parallel without them interfering each other
 - `file` determines where this code will be put when snipping (can be used with a number to write code out of order)
 
 ````markdown
@@ -73,10 +73,8 @@ terminal-markdown-runner session stop <session id | 'all'>
 
 - Parse cli arguments with clap
 - Maybe own markdown parser (for more control?)
-- Run Jupyter kernels in docker containers
-    - Set default kernel when building image (thus data in /api/kernels POST is not needed and does not need to be obtained)
+- Run Jupyter kernels
 - Use Jupyter Rest API for communication with kernels
     - Start a default kernel `curl -X POST localhost:8888/api/kernels -H "Authorization: Token <TOKEN>"'`
     - Connect with a WebSocket to send code and receive results
 - Use a yaml config (serde)
-    - Set docker image for a given language (different images could run different jupyter kernel implementations of the same language)
